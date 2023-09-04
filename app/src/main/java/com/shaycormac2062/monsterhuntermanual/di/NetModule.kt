@@ -34,7 +34,10 @@ class NetModule {
     @Provides
     fun provideJsonConverterFactory(): Converter.Factory {
         val contentType = "application/json".toMediaType()
-        return Json { ignoreUnknownKeys = true }.asConverterFactory(contentType)
+        return Json {
+            ignoreUnknownKeys = true
+            coerceInputValues = true
+        }.asConverterFactory(contentType)
     }
 
     @Provides

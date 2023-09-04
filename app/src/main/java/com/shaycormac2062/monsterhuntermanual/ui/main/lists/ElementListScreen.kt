@@ -20,15 +20,10 @@ fun ElementListScreen(elements: List<BaseElement>) {
         content = {
             elements.forEach { element ->
                 item {
-                    ElementCard()
+
                 }
             }
         }
     )
-}
-
-@Composable
-fun ElementCard() {
-
 }
 

@@ -1,4 +1,4 @@
-package com.shaycormac2062.monsterhuntermanual.ui.apiviewmodel
+package com.shaycormac2062.monsterhuntermanual.ui.main.viewmodel
 
 import com.shaycormac2062.monsterhuntermanual.domain.model.BaseElement
 

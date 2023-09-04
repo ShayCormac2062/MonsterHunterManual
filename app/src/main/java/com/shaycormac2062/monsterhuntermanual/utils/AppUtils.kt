@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -32,22 +33,27 @@ import com.shaycormac2062.monsterhuntermanual.R
 import com.shaycormac2062.monsterhuntermanual.ui.theme.Green40
 import com.shaycormac2062.monsterhuntermanual.ui.theme.White
 import com.shaycormac2062.monsterhuntermanual.utils.ApplicationException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun AppText(
-    modifier: Modifier? = null,
+    modifier: Modifier = Modifier,
     text: String,
     size: TextUnit? = null,
-    color: Color? = null
+    color: Color? = null,
+    maxLines: Int = 30
 ) {
     Text(
-        modifier = modifier ?: Modifier,
+        modifier = modifier,
         color = color ?: if (isSystemInDarkTheme()) Green40 else White,
         text = text,
         fontFamily = FontFamily(Font(R.font.coolvetica_rg)),
         fontSize = size ?: 16.sp,
         overflow = TextOverflow.Ellipsis,
-        maxLines = 7,
+        maxLines = maxLines,
+        textAlign = TextAlign.Center
     )
 }
 
@@ -92,8 +98,9 @@ fun LoadingProgressBar() {
 @OptIn(ExperimentalAnimationApi::class, ExperimentalPagerApi::class)
 @Composable
 fun ErrorMessage(
-    exception: ApplicationException,
-    onClick: () -> Unit,
+    exception: String,
+    scope: CoroutineScope,
+    onClick: () -> Unit
 ) {
     var stage by remember {
         mutableStateOf(false)
@@ -128,9 +135,9 @@ fun ErrorMessage(
                     vertical = 8.dp,
                     horizontal = 56.dp
                 ),
-                text = exception.message,
+                text = exception,
                 color = color,
-                size = 24.sp
+                size = 22.sp
             )
             AppButton(
                 modifier = Modifier
@@ -139,8 +146,11 @@ fun ErrorMessage(
                     .background(AppGradient()),
                 text = stringResource(id = R.string.try_again),
                 onClick = {
-                    onClick
-                    stage = false
+                    scope.launch {
+                        stage = false
+                        delay(600L)
+                        onClick.invoke()
+                    }
                 }
             )
         }

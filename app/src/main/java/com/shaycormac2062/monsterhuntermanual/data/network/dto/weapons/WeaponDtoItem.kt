@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class WeaponDtoItem(
     @SerialName("ammo")
-    val ammo: List<Ammo>?,
+    val ammo: List<Ammo>? = emptyList(),
     @SerialName("assets")
     val assets: Assets?,
     @SerialName("attack")
@@ -15,15 +15,15 @@ data class WeaponDtoItem(
     @SerialName("attributes")
     val attributes: Attributes?,
     @SerialName("boostType")
-    val boostType: String?,
+    val boostType: String = "Unknown",
     @SerialName("coatings")
-    val coatings: List<String>?,
+    val coatings: List<String>? = emptyList(),
     @SerialName("crafting")
     val crafting: Crafting?,
     @SerialName("damageType")
     val damageType: String?,
     @SerialName("deviation")
-    val deviation: String?,
+    val deviation: String = "Unknown",
     @SerialName("durability")
     val durability: List<Durability>?,
     @SerialName("elderseal")
@@ -35,15 +35,15 @@ data class WeaponDtoItem(
     @SerialName("name")
     val name: String?,
     @SerialName("phial")
-    val phial: Phial?,
+    val phial: Phial? = null,
     @SerialName("rarity")
     val rarity: Int?,
     @SerialName("shelling")
-    val shelling: Shelling?,
+    val shelling: Shelling? = null,
     @SerialName("slots")
     val slots: List<Slot>?,
     @SerialName("specialAmmo")
-    val specialAmmo: String?,
+    val specialAmmo: String = "Unknown",
     @SerialName("type")
     val type: String?
 )

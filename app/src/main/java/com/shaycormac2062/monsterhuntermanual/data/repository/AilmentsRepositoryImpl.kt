@@ -17,7 +17,7 @@ class AilmentsRepositoryImpl @Inject constructor(
         with(api.getAilments()) {
             if (isSuccessful && body() != null) {
                 RequestResult.Success(
-                    data = body()?.items?.map { it.toAilment() }
+                    data = body()?.map { it.toAilment() }
                 )
             } else RequestResult.Error(
                 message = ApplicationException.ApiException().message

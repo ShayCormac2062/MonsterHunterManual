@@ -7,15 +7,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Attributes(
     @SerialName("affinity")
-    val affinity: Int?,
+    val affinity: String = "0",
     @SerialName("boostType")
-    val boostType: String?,
+    val boostType: String = "Unknown",
     @SerialName("coatings")
-    val coatings: List<String?>?,
+    val coatings: List<String?> = emptyList(),
     @SerialName("damageType")
-    val damageType: String?,
+    val damageType: String = "Unknown",
     @SerialName("defense")
-    val defense: Int?,
+    val defense: String = "0",
     @SerialName("elderseal")
-    val elderseal: String?
+    val elderseal: String = "Unknown"
 )

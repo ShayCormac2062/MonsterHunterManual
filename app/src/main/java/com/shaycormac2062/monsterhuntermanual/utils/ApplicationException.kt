@@ -9,7 +9,7 @@ sealed class ApplicationException(override val message: String) : Exception(mess
         : ApplicationException(message)
 
     companion object {
-        const val INTERNET_CONNECTION_EXCEPTION = "No internet connection. Please turn it on and try again."
+        const val INTERNET_CONNECTION_EXCEPTION = "You have some trouble with the internet connection. Please turn it on and try again."
         const val API_EXCEPTION = "Sorry, problems on the server. Please try again later."
     }
 }

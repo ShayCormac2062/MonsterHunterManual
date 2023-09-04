@@ -1,6 +1,5 @@
 package com.shaycormac2062.monsterhuntermanual.data.network.api
 
-import com.shaycormac2062.monsterhuntermanual.data.network.dto.charms.CharmDto
 import com.shaycormac2062.monsterhuntermanual.data.network.dto.charms.CharmDtoItem
 import retrofit2.Response
 import retrofit2.http.GET
@@ -9,7 +8,7 @@ import retrofit2.http.Path
 interface CharmsApi {
 
     @GET("charms")
-    suspend fun getCharms(): Response<CharmDto>
+    suspend fun getCharms(): Response<List<CharmDtoItem>>
 
     @GET("charms/{id}")
     suspend fun getCharmById(

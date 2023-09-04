@@ -7,35 +7,35 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Modifiers(
     @SerialName("affinity")
-    val affinity: Int?,
+    val affinity: String = "0",
     @SerialName("attack")
-    val attack: Int?,
+    val attack: String = "0",
     @SerialName("damageDragon")
-    val damageDragon: Int?,
+    val damageDragon: String = "0",
     @SerialName("damageFire")
-    val damageFire: Int?,
+    val damageFire: String = "0",
     @SerialName("damageIce")
-    val damageIce: Int?,
+    val damageIce: String = "0",
     @SerialName("damageThunder")
-    val damageThunder: Int?,
+    val damageThunder: String = "0",
     @SerialName("damageWater")
-    val damageWater: Int?,
+    val damageWater: String = "0",
     @SerialName("defense")
-    val defense: Int?,
+    val defense: String = "0",
     @SerialName("health")
-    val health: Int?,
+    val health: String = "0",
     @SerialName("resistAll")
-    val resistAll: Int?,
+    val resistAll: String = "0",
     @SerialName("resistDragon")
-    val resistDragon: Int?,
+    val resistDragon: String = "0",
     @SerialName("resistFire")
-    val resistFire: Int?,
+    val resistFire: String = "0",
     @SerialName("resistIce")
-    val resistIce: Int?,
+    val resistIce: String = "0",
     @SerialName("resistThunder")
-    val resistThunder: Int?,
+    val resistThunder: String = "0",
     @SerialName("resistWater")
-    val resistWater: Int?,
+    val resistWater: String = "0",
     @SerialName("sharpnessBonus")
-    val sharpnessBonus: Int?
+    val sharpnessBonus: String = "0"
 )

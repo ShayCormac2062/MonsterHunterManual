@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Attributes(
     @SerialName("requiredGender")
-    val requiredGender: String?
+    val requiredGender: String? = null
 )

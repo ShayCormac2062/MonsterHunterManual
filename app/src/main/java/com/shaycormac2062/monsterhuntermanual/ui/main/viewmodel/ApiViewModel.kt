@@ -1,4 +1,4 @@
-package com.shaycormac2062.monsterhuntermanual.ui.apiviewmodel
+package com.shaycormac2062.monsterhuntermanual.ui.main.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -24,27 +24,34 @@ open class ApiViewModel<T: BaseElement> @Inject constructor(
     val interactor: BaseInteractor<T>
 ) : ViewModel() {
 
-    private var _isLoading: MutableStateFlow<ElementsListState<T>> = MutableStateFlow(ElementsListState(true))
-    val isLoading: StateFlow<ElementsListState<T>> = _isLoading
+    private var _listState: MutableStateFlow<ElementsListState<T>> = MutableStateFlow(
+        ElementsListState(true)
+    )
+    val listState: StateFlow<ElementsListState<T>> = _listState
 
     init {
         onPageOpen()
     }
 
     fun onPageOpen() {
-        _isLoading.update { it.copy(isLoading = true) }
+        _listState.update { it.copy(
+            isLoading = true,
+            elements = emptyList(),
+            exception = null
+        ) }
         viewModelScope.launch {
             when (val result = interactor.getElements()) {
                 is RequestResult.Error -> {
-                    _isLoading.update {
+                    _listState.update {
                         it.copy(
                             isLoading = false,
                             exception = result.message
                         )
                     }
+
                 }
                 else -> {
-                    _isLoading.update {
+                    _listState.update {
                         it.copy(
                             isLoading = false,
                             elements = result.data
